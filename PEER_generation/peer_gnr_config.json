@@ -1,7 +1,4 @@
 {
-    # Docker image - by default used by singularity (--use-singularity)
-    "DOCKER" : "docker://letaylor/moltraits",
-    
     # PEER settings
     # PEER settings for demo:
     #"PEER_FACTORS" : ["1"],
