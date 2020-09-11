@@ -1,0 +1,33 @@
+{
+    # Docker image - by default used by singularity (--use-singularity)
+    "DOCKER" : "docker://letaylor/moltraits",
+    
+    #settings for prep_moltraits:
+    "INPUT_PREP_PHENO_QTLTOOLS_START_COL" : 2,
+    "INPUT_PREP_PHENO_QTLTOOLS_FEATURE_COL" : "gene",
+    
+    #settings for qtltools__prep_moltraits:
+    "PARAM_QTLTOOLS_Y" : peer_input,
+    
+    #settings for qtltools__prep_covs: #this file has to be in absolate path because it is in trans_opt when python script generates it, in factor_* when running eQTL mapping
+    "PARAM_PEER_QTLTOOLS_BASE_COVAR" : "/net/snowwhite/home/guanli/muscle_trans_snk/data_201906/covariates.txt.gz", 
+    
+    #settings for qtltools__optimize_nominal:
+    "PEER_FACTORS_OPT":["0","1","2","3","4","5","6","7","8","9","10","15","20","25","30","35","40","45","50","55","60","65","70","75","80"],
+
+    #settings common in PEER, cis and trans-eQTL snakefile
+    "NJOBS_NOMINAL" : 10,
+    "PARAM_QTLTOOLS" : "--cov data/covariates.txt.gz",
+    "PARAM_QTLTOOLS_NOMINAL_CUTOFF" : 0.0001,
+    "NJOBS_PERMUTE" : 10,
+    "NJOBS_CONDITIONAL" : 10,
+    "NPERM" : 100,
+
+    #settings for ld_prune
+    "PLINK_LD_PRUNE" : "1000 500 0.8",
+    
+    # QTLtools settings
+    "PARAM_QTLTOOLS" : "--cov data/covariates.txt.gz",
+    "PARAM_QTLTOOLS_NOMINAL_CUTOFF" : 1
+}
+
