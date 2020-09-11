@@ -1,7 +1,4 @@
 {
-    # Docker image - by default used by singularity (--use-singularity)
-    "DOCKER" : "docker://letaylor/moltraits",
-    
     # general settings
     "NJOBS_NOMINAL" : 30,
     "NJOBS_PERMUTE" : 30,
