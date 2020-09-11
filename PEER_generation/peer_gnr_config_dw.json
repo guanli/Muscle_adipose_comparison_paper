@@ -1,0 +1,23 @@
+{
+    # Docker image - by default used by singularity (--use-singularity)
+    "DOCKER" : "docker://letaylor/moltraits",
+    
+    # PEER settings
+    # PEER settings for demo:
+    #"PEER_FACTORS" : ["1"],
+    # Note: add --covariate_file data/covariates.tsv.gz to run PEER with covs
+    #"PARAM_PEER" : "--iterations 1 --account_mean FALSE --inverse_norm TRUE",
+    
+    # singularity for QTLtools call within PEER dir
+    "PARAM_PEER_QTLTOOLS_SINGULARITY" : True, 
+    "PARAM_PEER_QTLTOOLS_SINGULARITY_DIR" : '', #<wkdir>/.snakemake/singularity
+    
+    # suggested PEER settings for run-time:
+    "PEER_FACTORS" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20","25","30","35","40","45","50","55","60","65","70","75","80"],
+    "PARAM_PEER" : "--iterations 1000 --account_mean FALSE --inverse_norm TRUE --feature_ids_colnam gene",
+    "START_COL" : 9,
+    #"PARAM_PEER_QTLTOOLS_SINGULARITY" : True, # singularity for QTLtools call
+    
+    # know factors
+    #"PARAM_PEER_KNOWN_FACTORS" : "data/known_factors.tsv.gz"
+}

@@ -1,0 +1,61 @@
+#!/usr/bin/env snakemake
+
+"""
+Snakemake PEER pipeline
+=======================
+
+Generate PEER factors and then draw correlaton with known factos
+"""
+
+#__version__ = '0.1.0.01'
+
+from snakemake.exceptions import WorkflowError
+
+configfile: "peer_gnr_config.json"
+
+# use the qtl/Snakefile::qtltools_prep__vcf rule for the 
+# peer/Snakefile::qtltools__prep_vcf rule
+
+rule final:
+    input:
+        # PEER factor results
+        expand(
+            'peer_runs/factor_{k}/moltraits-peer_factors.tsv.gz', 
+            k=config['PEER_FACTORS']
+        ),
+        
+        # correlation results
+        #'peer_factors-qtltools_permute-significant-summary.tsv.gz',
+        
+        
+# PEER #########################################################################
+rule peer__run:
+    """
+    QTLtools:   nominal cis mapping (association with all variants)
+    """
+    input:
+        pheno='data/moltraits.bed.gz',
+        #pheno='/net/snowwhite/home/guanli/AdiposeProject/freeze5.adipose.analysis.tpm.filtered_genes_invnorm.tsv.gz',
+    output:
+        'peer_runs/factor_{k}/moltraits-peer_factors.tsv.gz',
+        'peer_runs/factor_{k}/moltraits-peer_weights.tsv.gz',
+        'peer_runs/factor_{k}/moltraits-peer_precision.tsv.gz',
+        'peer_runs/factor_{k}/moltraits-peer_residuals.tsv.gz',
+        'peer_runs/factor_{k}/moltraits-peer_residuals-invnorm.tsv.gz'
+    params:
+        script_peer=srcdir('scripts/peer-run.R'),
+        PARAM=config['PARAM_PEER'],
+        start_col=config['START_COL']
+    shell:
+        # run peer
+        'Rscript {params.script_peer} '
+            '--file {input.pheno} '
+            '--sample_column_start {params.start_col} '
+            '--hidden_factors {wildcards.k} '
+            '--output_prefix peer_runs/factor_{wildcards.k}/moltraits ' 
+            '{params.PARAM}' # PARAM from config
+################################################################################
+
+# Correlation plot with known factors ###############################################################
+
+################################################################################
