@@ -1,0 +1,31 @@
+with open('dap_tested_genes.txt') as f: #should be common genes
+    gene_names=f.read().splitlines()
+
+rule final:
+    input:
+        #expand('sbams_data/{gene_names}.dat',gene_names=gene_names)
+        expand('cs/{gene_names}.cs',gene_names=gene_names)
+        
+rule prep_dat:
+    output:
+        'sbams_data/{gene_names}.dat'
+    params:
+        pos = config['POS']
+    shell:
+        'Rscript scripts/prep_dat.R --mol_trait {wildcards.gene_names} --pos {params.pos}'
+
+rele dap:
+    input:
+        rules.prep_dat.output
+    output:
+        'dap_res/{gene_names}.fm.out'
+    shell:
+        '/net/snowwhite/home/guanli/softwares/integrative/exp/bin/dap-g -ld_control 0.5 --no_size_limit -o {output}'
+
+rule get_cs:
+    input:
+         rules.dap.output
+    output:
+        'cs/{gene_names}.cs'
+    shell:
+        'perl scripts/get_cs.pl -d {input} > {output}'
