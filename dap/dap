@@ -29,3 +29,22 @@ rule get_cs:
         'cs/{gene_names}.cs'
     shell:
         'perl scripts/get_cs.pl -d {input} > {output}'
+        
+rule prep_fastenloc:
+    input:
+        '/net/snowwhite/home/guanli/muscle_trans_snk/eQTL_201906/cis/data/genotypes.vcf.gz'
+    output:
+        {dap_for_fastenloc}.vcf.gz
+    shell:
+        'perl scripts/summarize_dap.pl -d dap_res/ -v {input} > {dap_for_fastenloc}'
+    
+~/softwares/new_fastenloc/fastenloc/src/fastenloc -eqtl muscle_eqtl.dap.vcf.gz -gwas /net/snowwhite/home/guanli/mus_exeRpt/enloc/gwas_data/mahajan_finemap_gwas.tab.gz -total_variant 6975734 -prefix muscle_t2d
+rule fastenloc:
+    input:
+        gwas='/net/snowwhite/home/guanli/mus_exeRpt/enloc/gwas_data/mahajan_finemap_gwas.tab.gz',
+        qtl=rules.prep_fastenloc.output,
+    output:
+        '{dap_for_fastenloc}.enloc.sig.out',
+        '{dap_for_fastenloc}.enloc.snp.out'
+    shell:
+        '~/softwares/new_fastenloc/fastenloc/src/fastenloc -eqtl {input.qtl} -gwas {input.gwas} -total_variant {snp_num} -prefix {dap_for_fastenloc}'
