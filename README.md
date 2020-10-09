@@ -1,5 +1,5 @@
 # Muscle_adipose_comparison_paper
-This repository contains code used for large-scale analyses for Guan et al. FUSION muscle-adipose comparison paper, including code to 
+This repository contains analysis pipelines used for large-scale analyses for Guan et al. FUSION muscle-adipose comparison paper, including code to 
 - Generate PEER factors --> PEER_generation/
 - Find the number of PEER factors that optimize QTL detection rate --> PEER_optimization/
 - Adipose tissue deconvolution --> adipose_decon_4_ct/
@@ -7,4 +7,4 @@ This repository contains code used for large-scale analyses for Guan et al. FUSI
 - signle-variant cis QTL mapping --> cis_QTL_mapping/
 - Multiple-variant cis QT mapping --> dap/
 
-The analysis pipelines were built using Snakemake and thus there is a Snakefile and a corresponding configuration file in each folder alongwith a configuration file. 
+The analysis pipelines were built using Snakemake. Each folder has a Snakefile and a corresponding configuration file. 
