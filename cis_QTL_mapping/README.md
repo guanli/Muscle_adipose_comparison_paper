@@ -15,13 +15,13 @@ Parameters in the config_analysis.json file
 
 Result files that will appear after this pipeline finished. 
  - cis-eQTL nominal pass  <br />
- - `qtltools_nominal.tsv.gz` cis-eQTL associations <br />
+   - `qtltools_nominal.tsv.gz` cis-eQTL associations <br />
  - cis-eQTL permutation pass  <br />
- - `qtltools_permute-significant.tsv.gz`  <br /> 
-    - After applying the ST_FDR procedure, the genes are considered to be significant 
- - `qtltools_permute-thresholds.txt.gz`  <br /> 
-    - Gene-specific significant threshold from the permutation tests
- - `qtltools_permute.tsv.gz` <br /> 
-    - The cis-eQTL mapping results for the lead SNP (the SNP with the most significant pvalues) of each gene 
+   - `qtltools_permute-significant.tsv.gz`  <br /> 
+      - After applying the ST_FDR procedure, the genes are considered to be significant 
+   - `qtltools_permute-thresholds.txt.gz`  <br /> 
+      - Gene-specific significant threshold from the permutation tests
+   - `qtltools_permute.tsv.gz` <br /> 
+      - The cis-eQTL mapping results for the lead SNP (the SNP with the most significant pvalues) of each gene 
  
  
