@@ -5,6 +5,6 @@ It 1) converts the cis-eQTL input files(gene expression file, genotype file and 
 
 Command to run the pipeline snakemake --snakefile dap_enloc final
 
-DAP output will be in dap_res/, where there is the \*.fm.out for each each. <br \>
-95% credible sets will be in cs/, where there is the \*.cs for each each that has 95% credible set.<br \>
+DAP output will be in dap_res/, where there is the \*.fm.out for each each. <br />
+95% credible sets will be in cs/, where there is the \*.cs for each each that has 95% credible set.<br />
 colocalization output will be in the current folder, include \*.enloc.sig.out and \*.enloc.snp.out
