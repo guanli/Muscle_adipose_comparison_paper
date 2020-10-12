@@ -18,9 +18,9 @@ Result files that will appear after this pipeline finished.
    - `qtltools_nominal.tsv.gz` cis-eQTL associations <br />
  - cis-eQTL permutation pass  <br />
    - `qtltools_permute-significant.tsv.gz`  <br /> 
-      - After applying the ST_FDR procedure, the genes are considered to be significant 
+      - After applying the ST_FDR procedure, the genes that are considered to be significant 
    - `qtltools_permute-thresholds.txt.gz`  <br /> 
-      - Gene-specific significant threshold from the permutation tests
+      - Gene-specific significant threshold from the approximate permutation pass
    - `qtltools_permute.tsv.gz` <br /> 
       - The cis-eQTL mapping results for the lead SNP (the SNP with the most significant pvalues) of each gene 
  
