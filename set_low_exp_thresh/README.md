@@ -5,36 +5,30 @@ This pipleline is used to determined the threshold for filtering out lowly expre
   4. Use the generate additive model to fit a smooth spline between the eQTL detection rates and mean read count or variance of beta-values. <br />
 
 Example command of this step for genes (mRNAs or miRNAs)<br />
-`~/common_scripts/low_exp_BHFDR_each_bin.R -i ~/adi_exeRpt/eQTL_low_exp_201906/cis/qtltools_nominal.tsv.gz -e ~/adi_exeRpt/data_201906/exceRpt_miRNA_ReadCounts_no_dup_pos_263.tab.gz -n 20 -b 2 -g miRNA -s mean -o ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc`<br />
+  `~/common_scripts/low_exp_BHFDR_each_bin.R -i ~/adi_exeRpt/eQTL_low_exp_201906/cis/qtltools_nominal.tsv.gz -e ~/adi_exeRpt/data_201906/exceRpt_miRNA_ReadCounts_no_dup_pos_263.tab.gz -n 20 -b 2 -g miRNA -s mean -o ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc`<br />
 
 Example command of this step for genes (mRNAs or DNAme sites)<br />
-`~/common_scripts/low_exp_BHFDR_each_bin.R -i ~/adipose_dname/eQTL_201906/cis/pct10_qtltools_nominal.tsv.gz -e /net/snowwhite/home/FUSION/Tissue/Methylation/EPIC/processed_data/methyl_v003/epic-beta-A.csv.gz -n 200 -b 2 -g probe -s variance -o ~/fusion_mus_adi_cmp/low_exp_thresh/gam_adipose_dname_beta_variance`<br />
+  `~/common_scripts/low_exp_BHFDR_each_bin.R -i ~/adipose_dname/eQTL_201906/cis/pct10_qtltools_nominal.tsv.gz -e /net/snowwhite/home/FUSION/Tissue/Methylation/EPIC/processed_data/methyl_v003/epic-beta-A.csv.gz -n 200 -b 2 -g probe -s variance -o ~/fusion_mus_adi_cmp/low_exp_thresh/gam_adipose_dname_beta_variance`<br />
 
 Command line arguments <br /> 
-`-i` The cis-QTL associations of all SNP-gene/DNAme sites pairs (QTLoutput format) <br />
-`-e` The gene read count or DNAme sites beta-values
-`-n` Number of genes or DNAme sites within each bin. Currently the bin sizes I am using are 20 for miRNA, 200 for DNAme sites and 100 for mRNA.
-`-b` Tcolumn in exp_level file where the number begins
-`-g` The column name of genes/DNAme sites names
-`-s` Use mean or variance
-`-o` Output prefix
+  `-i` The cis-QTL associations of all SNP-gene/DNAme sites pairs (QTLoutput format) <br />
+  `-e` The gene read count or DNAme sites beta-values <br />
+  `-n` Number of genes or DNAme sites within each bin. Currently the bin sizes I am using are 20 for miRNA, 200 for DNAme sites and 100 for mRNA. <br />
+  `-b` Tcolumn in exp_level file where the number begins <br />
+  `-g` The column name of genes/DNAme sites names <br />
+  `-s` Use mean or variance <br />
+  `-o` Output prefix <br />
 
-Next it Manually Look at starting from which bin, there is no longer 0 proportion of molecular traits having QTL
-f = '~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc_gam_pred_prop.tab.gz'
-res = read.table(f, header = T, sep = '\t', stringsAsFactors = F)
-table(res$bin)#1-19 bin 99 genes last 94 genes
-dat = aggregate(res[,"sig"], by=list(res$bin), FUN=mean) 
-subset(dat,dat[,2]>0) #from bin 9
 
 3. See the effects of using different cut-off points on the QTL detection rate by including genes or DNAme sites from the first bin where the proportion of genes or DNAme sites with QTLs were no longer zero, until about half of the genes or DNAme sites were included.
 
 Example command of this step <br />
-`Rscript ~/common_scripts/mol_traits_diff_low_exp_cutoff.R -i ~/adi_exeRpt/eQTL_low_exp_201906/cis/qtltools_nominal.tsv.gz -e ~/adi_exeRpt/data_201906/exceRpt_miRNA_ReadCounts_no_dup_pos_263.tab.gz -p ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc_gam_pred_prop.tab.gz -n 9,10,11,12,13 -b 2 -g miRNA -t 0.05,0.01 -o ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc`<br /> 
+  `Rscript ~/common_scripts/mol_traits_diff_low_exp_cutoff.R -i ~/adi_exeRpt/eQTL_low_exp_201906/cis/qtltools_nominal.tsv.gz -e ~/adi_exeRpt/data_201906/exceRpt_miRNA_ReadCounts_no_dup_pos_263.tab.gz -p ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc_gam_pred_prop.tab.gz -n 9,10,11,12,13 -b 2 -g miRNA -t 0.05,0.01 -o ~/fusion_mus_adi_cmp/low_exp_thresh_final/adipose_mirna_rc`<br /> 
 
 Command line arguments <br /> 
-`-p` Output from the first step
-`-n` The starting bin from which to include genes or DNAme sites
-`-t` BH-FDR threshold options
+  `-p` Output from the first step <br />
+  `-n` The starting bin from which to include genes or DNAme sites <br />
+  `-t` BH-FDR threshold options <br />
 
 
 The last step can also be used to evaluate its effects on the detection rate for tratis associaionts with the example command as shown below.<br />
