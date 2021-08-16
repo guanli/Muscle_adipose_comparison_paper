@@ -3,7 +3,7 @@ This pipeline generates PEER output for the number of PEER factors specified in 
 Before running the pipeline
 - Create a folder called data and put the gene expression level file into this folder
 - Create a folder called peer_runs and subfolders e.g. factor_1, factor_10. These folders are where the PEER output is going to be stored. 
-- Create a folder called scripts and put the peer-run.R into this folder
+- Create a folder called scripts and place the peer-run.R into this folder
 
 The snakefile first inverse normalize the input file (if inverse_norm is TRUE) and then run PEER software. 
 
