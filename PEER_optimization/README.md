@@ -1,9 +1,9 @@
 
 This pipeline finds the number of PEER factors that optimizes QTL detection rate. This Snakemake workflow pipeline was inspired by Dr.Leland Taylor's pipleline  <https://github.com/letaylor/snakemake-qtl> and modified by me. 
 
-This piplefile\
-1) Performs LD-pruning to the input genotype file \ 
-2) Use the pruned list of genetic variants, the input gene expression file and the input covariate file to conduct QTL mapping using each of the PEER factors specified \
+This piplefile
+1) Performs LD-pruning to the input genotype file  
+2) Use the pruned list of genetic variants, the input gene expression file and the input covariate file to conduct QTL mapping using each of the PEER factors specified 
 3) Generate QTL mapping results into ../peer_runs/factor_k/ folder. Therefore, by comparing the number of genes having eQTL or the number of significant SNP-gene associations, the number of PEER factors that optimizes QTL detection rate can be determined. 
 
 Run the Snakemake pipeline with the following command.<br />
