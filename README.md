@@ -3,7 +3,7 @@ This repository contains analysis pipelines used for large-scale analyses for th
 - Generate PEER factors --> PEER_generation/
 - Find the number of PEER factors that optimized QTL detection rate --> PEER_optimization/
 - Adipose tissue deconvolution using the 5-component approach --> adipose_decon_4_ct/
-- Find the threshold to exclude lowly expressed genes while maximizing the power to detect molecular trait-genotype associations
+- Find the threshold to exclude lowly expressed genes while maximizing the power to detect molecular trait-genotype associations --> set_low_exp_thresh
 - Marginal cis-QTL mapping --> cis_QTL_mapping/
 - Multiple indepdent cis-QTL analysis --> dap/
 
