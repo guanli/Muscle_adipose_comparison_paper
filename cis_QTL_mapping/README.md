@@ -2,12 +2,13 @@
 This pipeline can perform the following two analyses.
  - cis-eQTL nominal pass  <br />
   `snakemake qtltools_proximal__nominal_concat --snakefile Snakefile --configfile config_analysis.json`  <br />
- - cis-eQTL permutation pass: An approximate permutation analysis to get a pvalue adjusted for the number of tested SNPs for each gene  <br />
+ - cis-eQTL permutation pass: An approximate permutation analysis to get pvalues that adjusted for the number of tested SNPs for each gene  <br />
   `snakemake qtltools_proximal__permute_fdr --snakefile Snakefile --configfile config_analysis.json`
 
 Before running the pipeline
  - Create a folder called data and put gene expression, covairate and genotype files into this folder.
- - If running the permutation pass Creat a folder called scripts, place there the runFDR_cis.R downloaded from (https://qtltools.github.io/qtltools/) and name it qtltools-runFDR_cis.R. This script is what QTLtools uses to correct for the number of tested genes through Storey & Tibshirani False Discovery Rate procedure (ST_FDR).
+ - If running the permutation pass 
+   - Creat a folder called scripts, place there the runFDR_cis.R downloaded from (https://qtltools.github.io/qtltools/) and name it qtltools-runFDR_cis.R. This script is what QTLtools uses to adjust for the number of tested genes through Storey & Tibshirani False Discovery Rate procedure (ST_FDR).
  
 Parameters in the config_analysis.json file
  - `NPERM`: Number of permutations to run, a large number is recommended for final QTL mapping, e.g. 10000. <br />
@@ -18,7 +19,7 @@ Result files that will appear after this pipeline finished.
    - `qtltools_nominal.tsv.gz` cis-eQTL associations <br />
  - cis-eQTL permutation pass  <br />
    - `qtltools_permute-significant.tsv.gz`  <br /> 
-      - After applying the ST_FDR procedure, the genes that are considered to be significant 
+      - After applying the ST_FDR procedure, the genes that are considered to be eGene 
    - `qtltools_permute-thresholds.txt.gz`  <br /> 
       - Gene-specific significant threshold from the approximate permutation pass
    - `qtltools_permute.tsv.gz` <br /> 
