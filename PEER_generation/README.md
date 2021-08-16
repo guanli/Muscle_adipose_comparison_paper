@@ -24,3 +24,5 @@ Five result file will appear in each result folder, including
   - moltraits-peer_residuals-invnorm.tsv.gz
   - moltraits-peer_residuals.tsv.gz
   - moltraits-peer_weights.tsv.gz
+
+Example directory /net/snowwhite/home/guanli/muscle_trans_snk/peer_all_gene_201906/
