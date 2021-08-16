@@ -10,7 +10,7 @@ Run the Snakemake pipeline with the following command.<br />
   `snakemake --snakefile peer_opt_cis_perm_based --configfile peer_opt_trans.json -j 12 --latency-wait 60 > snk_jobs.txt 2>&1 &`
   
 Before running this pipeline
-  - Create a folder called data/ and put original genotype file (not pruned) genotypes.vcf.gz, gene expression level file moltraits_trans.bed.gz there
+  - Create a folder called data/ and place original genotype file (not pruned) genotypes.vcf.gz, gene expression level file moltraits_trans.bed.gz there
   - Create a folder called scripts and place Li_peer-optimize_perm_plot.R, qtltools-runFDR_cis.R and realpath files there. 
 
 Options in the configuration file
@@ -29,3 +29,5 @@ Output results in each PEER factor folder
 Output in the current folder
   - peer_factors-qtltools_perm-summary.tsv: the number of genes with QTL from result using different number of PEER factors
   - eGene_cis_peer_factors-qtltools_perm-summary.pdf: a line plot displaying the above results. 
+
+Example folder /net/snowwhite/home/guanli/muscle_trans_snk/peer_all_gene_201906/cis_opt/
