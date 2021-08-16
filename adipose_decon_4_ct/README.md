@@ -2,11 +2,11 @@ This pipeline uses UNMIX function in the Deseq2 package to perform tissue deconv
 
 `Rscript deseq2_decon_final.R -m freeze5.adipose.tpm.tsv.gz -r ref.txt -c class.txt -v shift_value.txt -o kerrin_4_type_blood_tabassum_adi_296_mrna/` <br />
 
-It takes as input files 
-1) Gene expression values of each sample in your RNA-seq data 
-2) Gene expression values of each sample in the reference data
-3) A file specifying the tissue/cell type assignment of the reference file 
-4) A file with a range of shift_values (a key parameter to optimize recommanded by Dr.Love, developer of the UNMIX funtion).
+Input files 
+- Gene expression values of each sample in your RNA-seq data 
+- Gene expression values of each sample in the reference data
+- A file specifying the tissue/cell type assignment of the reference file 
+- A file with a range of shift_values (a key parameter to optimize recommanded by Dr.Love, developer of the UNMIX funtion).
 
 File format (all tab deliminated) <br />
 - Gene expression file to deconvolute*<br />
