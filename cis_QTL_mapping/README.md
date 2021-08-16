@@ -25,4 +25,4 @@ Result files that will appear after this pipeline finished.
    - `qtltools_permute.tsv.gz` <br /> 
       - The cis-eQTL mapping results for the lead SNP (the SNP with the most significant pvalues) of each gene 
  
- 
+ Example directory /net/snowwhite/home/guanli/muscle_trans_snk/eQTL_201906/cis/
