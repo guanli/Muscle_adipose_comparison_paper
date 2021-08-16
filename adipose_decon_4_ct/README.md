@@ -1,4 +1,4 @@
-This pipeline uses UNMIX function in the Deseq2 package to perform tissue deconvolution of Bulk RNA-seq data. 
+This script uses UNMIX function in the Deseq2 package to perform tissue deconvolution of Bulk RNA-seq data. 
 
 `Rscript deseq2_decon_final.R -m freeze5.adipose.tpm.tsv.gz -r ref.txt -c class.txt -v shift_value.txt -o kerrin_4_type_blood_tabassum_adi_296_mrna/` <br />
 
@@ -55,3 +55,6 @@ endothelial 2 2 2 2 2 2 1 1 1
 1
 5
 ```
+- The output files include a file with the estimated proportions for each sample and meanSd plots for each shift values.
+
+Example output file directory /net/snowwhite/home/guanli/AdiposeProject/tissDecon/unmix/may312019/kerrin_4_type_blood_tabassum_adi_296_mrna/
