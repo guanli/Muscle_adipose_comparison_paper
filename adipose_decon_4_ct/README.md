@@ -9,7 +9,7 @@ Input files
 - A file with a range of shift_values (a key parameter to optimize recommanded by Dr.Love, developer of the UNMIX funtion).
 
 File format (all tab deliminated) <br />
-- Gene expression file to deconvolute*<br />
+- Gene expression file to deconvolute <br />
 ```
 gene  A001  A002  A003 
 ENSG1 30.1  140.2 86.5
@@ -18,7 +18,7 @@ ENSG3 91.4  66.7  180.9
 ```
 <br />
 
-*Reference gene expression file* 
+- Reference gene expression file 
 ```
 gene  Ref001  Ref002  Ref003 
 ENSG1 30.1  140.2 86.5
@@ -27,7 +27,7 @@ ENSG3 91.4  66.7  180.9
 ```
 <br />
 
-*Reference tissue/cell type label*: "1" means is this tissue/cell type, "2" means not. If this example, the first 3 reference samples are adipocyte, the middle 3 samples are myocype, and the last 3 samples are endothelial cells. 
+- Reference tissue/cell type label*: "1" means is this tissue/cell type, "2" means not. If this example, the first 3 reference samples are adipocyte, the middle 3 samples are myocype, and the last 3 samples are endothelial cells. 
 ```
 adipocyte 1 1 1 2 2 2 2 2 2
 myocyte 2 2 2 1 1 1 2 2 2
@@ -35,7 +35,7 @@ endothelial 2 2 2 2 2 2 1 1 1
 ```
 <br />
 
-*Shiftvalues*: This following example file is what I acctually used in my analysis
+- Shift values file: This following example file is what I acctually used in my analysis
 ```
 1e-04
 5e-04
